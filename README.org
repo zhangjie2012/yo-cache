@@ -1,1 +1,15 @@
 #+TITLE: yo-cache based on Redis
+
+基础数据类型抽象，分布式锁或者消息队列，单独封装。
+
+* quickstart
+
+#+begin_src
+GOPRIVATE="gitlab.com/c3441" go get -u gitlab.com/c3441/yo-cache@main
+#+end_src
+
+* Features
+
+- [X] 基础类型：object, string, int/int64, float64, bool
+- [ ] Set
+- [ ] List
