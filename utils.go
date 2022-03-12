@@ -1,17 +1,14 @@
 package cache
 
 import (
-	"fmt"
+	"strings"
 
 	"github.com/go-redis/redis/v8"
 )
 
-// ComposeKey(2) 合成 key, 模块使用 `:` 分隔, 子模块使用 `.`
+// ComposeKey 合成 key, 模块使用 `:` 分隔, 子模块使用 `.`
 func ComposeKey(rawkey string) string {
-	return fmt.Sprintf("%s:%s:%s", version_, appName_, rawkey)
-}
-func ComposeKey2(module, rawkey string) string {
-	return fmt.Sprintf("%s:%s:%s:%s", version_, appName_, module, rawkey)
+	return ComposeKeys(prefix_, version_, appName_, rawkey)
 }
 
 // ErrorWrapper 错误码劫持, 全局扩展
@@ -20,4 +17,9 @@ func ErrorWrapper(err error) error {
 		return ErrNotExist
 	}
 	return err
+}
+
+// ComposeKeys
+func ComposeKeys(keys ...string) string {
+	return strings.Join(keys, ":")
 }

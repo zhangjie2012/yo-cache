@@ -19,6 +19,7 @@ var (
 )
 
 var (
+	prefix_  string        = "yo_cache"
 	appName_ string        = ""
 	version_ string        = "v1" // 用于 package 不兼容更新
 	client_  *redis.Client = nil
