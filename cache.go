@@ -98,6 +98,20 @@ func Del(ctx context.Context, key string) error {
 	return nil
 }
 
+// Set/Get bytes
+func SetBytes(ctx context.Context, key string, value []byte, expire time.Duration) error {
+	realKey := ComposeKey(key)
+	if err := client_.Set(ctx, realKey, value, expire).Err(); err != nil {
+		return ErrorWrapper(err)
+	}
+	return nil
+}
+
+func GetBytes(ctx context.Context, key string) ([]byte, error) {
+	realKey := ComposeKey(key)
+	return client_.Get(ctx, realKey).Bytes()
+}
+
 // Set/Get object
 func SetObject(ctx context.Context, key string, value interface{}, expire time.Duration) error {
 	realKey := ComposeKey(key)

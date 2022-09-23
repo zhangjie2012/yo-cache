@@ -51,6 +51,27 @@ func TestPTTL(t *testing.T) {
 	assert.Equal(t, -2*time.Nanosecond, d)
 }
 
+func TestSetGetBytes(t *testing.T) {
+	var (
+		ctx    context.Context = context.Background()
+		key    string          = "get-set.bytes"
+		value1 []byte          = []byte("hello, world")
+		value2 []byte
+		err    error
+	)
+
+	err = SetBytes(ctx, key, value1, 30*time.Second)
+	require.Nil(t, err)
+
+	value2, err = GetBytes(ctx, key)
+	require.Nil(t, err)
+
+	assert.EqualValues(t, value2, value1)
+
+	err = Del(ctx, key)
+	require.Nil(t, err)
+}
+
 func TestSetGetObject(t *testing.T) {
 	type User struct {
 		Name    string
