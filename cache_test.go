@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"gitlab.com/c3441/yo-kit/datastruct"
+	"github.com/zhangjie2012/yo-kit/datastruct"
 )
 
 func TestMain(m *testing.M) {

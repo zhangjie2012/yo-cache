@@ -9,7 +9,7 @@ import (
 
 	"github.com/go-redis/redis/v8"
 	"github.com/vmihailenco/msgpack/v5"
-	"gitlab.com/c3441/yo-kit/datastruct"
+	"github.com/zhangjie2012/yo-kit/datastruct"
 )
 
 var (
